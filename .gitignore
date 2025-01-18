@@ -3,3 +3,6 @@ data/
 
 # Ignore metadata
 metadata/
+
+# Ignore test data
+test/
