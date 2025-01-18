@@ -1,11 +1,11 @@
 # Need to install the readr package to access RNA Seq TSV files
-# install.packages("readr")
+install.packages("readr")
 
 # Load installed readr package
 library(readr)
 
 # Use file indexing to better access files
-files <- list.files(path = "data/", pattern = "*.tsv", full.names = TRUE)
+files <- list.files(path = "test/", pattern = "*.tsv", full.names = TRUE)
 
 # Read file into data frame
 
