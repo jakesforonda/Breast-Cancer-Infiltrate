@@ -7,6 +7,11 @@ library(readr)
 # Make a list of files to access for iterating
 files <- list.files(path = "test/", pattern = "*.tsv", full.names = TRUE)
 
+# Install dplyr package to help manipulate data structures
+install.packages("dplyr")
+
+# Load installed dplyr package
+library(dyplr)
 
 # Make an empty dataframe for merging
 merged_df <- data.frame()
