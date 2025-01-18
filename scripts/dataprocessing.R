@@ -29,17 +29,21 @@ for (file in files) {
   # Read data
   data <- read_tsv(file)
 
-  # Keep only gene_name and tpm_unstranded columns to use EPIC on
+  # Keep only gene_name and tpm_unstranded columns for infiltrate
   df <- data %>%
+
+    # Remove duplicate values in gene_names
+    distinct(gene_name, .keep_all = TRUE) %>%
     select(gene_name, tpm_unstranded) %>%
     rename(!!sample_name := tpm_unstranded)
 
-  # Store in list
+  # Store dataframe in list
   df_list[[sample_name]] <- df
 }
 
 # Merge the collected data frames of each sample
 merged_df <- reduce(df_list, full_join, by = "gene_name")
+
 
 # Save the merged data into results folder
 output_folder <- "results"
