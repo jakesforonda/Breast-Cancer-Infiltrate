@@ -1,3 +1,5 @@
+# When ran, script prepares TCGA downloads from current directory for processing.
+
 # Set the root directory to the current directory
 $rootDirectory = Get-Location
 

@@ -8,6 +8,7 @@ library(readr)
 files <- list.files(path = "test/", pattern = "*.tsv", full.names = TRUE)
 
 # Read file into data frame
-
 df1 <- read_tsv(files[1])
-print(df1)
+
+# Keep only gene_id, unstranded, and tpm_unstranded columns
+df1 <- df1[, c("gene_name", "unstranded", "tpm_unstranded")]
