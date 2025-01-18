@@ -1,0 +1,5 @@
+# Ignore raw data
+data/
+
+# Ignore metadata
+metadata/
