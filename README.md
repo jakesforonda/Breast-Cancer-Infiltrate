@@ -1,5 +1,5 @@
 # Breast-Cancer-Infiltrate
-Besides skin cancer, breast cancer is the most common cancer in women in the United States. With rise the of new sequencing technology, there is an abundance of cancer data that can be explored to potentially find new insights towards the treatment for breast cancer. This personal project seeks to explore RNA seq data from The Cancer Genome Atlas (TCGA). Specifically, the RNA seq data from the The Cancer Genome Atlas Breast Invasive Carcinoma Collection (TCGA-BRCA). This cohort is comprised of 1,231 unique tissue samples sequenced using the Illumina platform. 
+Besides skin cancer, breast cancer is the most common cancer in women in the United States. With the rise of new sequencing technology, there is an abundance of public cancer data that can be explored to potentially find new insights towards the treatment for breast cancer. This personal project seeks to explore RNA seq data from The Cancer Genome Atlas (TCGA). Specifically, the RNA seq data from the The Cancer Genome Atlas Breast Invasive Carcinoma Collection (TCGA-BRCA). This cohort is comprised of 1,231 unique tissue samples sequenced using the Illumina platform. 
 
 With this data, I seek to answer the following questions:
 * What major immune cell types infiltrate breast tumors?
