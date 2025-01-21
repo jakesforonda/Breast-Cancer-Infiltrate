@@ -15,3 +15,8 @@ In order to answer my first question, I will use MCPcounter, a tool made by Etin
 To answer my second question, I will use DEseq2 to perform differential expression analysis. Using a variety of statistical methods, I will be able to determine commonly expressed genes that are expressed in breast tumors. 
 
 # Progress
+
+Immune Cell Tumor Infiltrate:
+
+
+![infil_heatmap](results/infil_heatmap.png)
