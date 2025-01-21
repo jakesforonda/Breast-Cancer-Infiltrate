@@ -20,18 +20,21 @@ foreach ($folder in $subfolders) {
     # Locate the nested folder
     $nestedFolders = Get-ChildItem -Path $folder.FullName -Directory
     foreach ($nestedFolder in $nestedFolders) {
+        
         # Look for .tsv files in the nested folder
         $tsvFiles = Get-ChildItem -Path $nestedFolder.FullName -Filter "*.tsv" -File
         foreach ($tsvFile in $tsvFiles) {
+           
             # Move the .tsv file to the root directory
             $destinationPath = Join-Path -Path $rootDirectory -ChildPath $tsvFile.Name
             Move-Item -Path $tsvFile.FullName -Destination $destinationPath -Force
             Write-Output "Moved $($tsvFile.Name) from $nestedFolder.Name to current directory"
 
-            # Modify the TSV file to remove rows 1, 3, 4, 5, and 6
+            # Modify the TSV file to remove unneccesary rows
             $content = Get-Content -Path $destinationPath
             $rowIndex = 0
             $filteredContent = foreach ($line in $content) {
+                
                 # Skip rows 1, 3, 4, 5, and 6 (1-based indexing)
                 if ($rowIndex -notin @(0, 2, 3, 4, 5)) {
                     $line
