@@ -32,7 +32,7 @@ write.csv(results_log, output_file, row.names = TRUE)
 
 # Generate png for heatmap
 output_file <- file.path("results", "infil_heatmap.png")
-png(output_file, width = 1600, height = 600)
+png(output_file, width = 1200, height = 800)
 
 # Plot the heatmap with customizations
 pheatmap(as.matrix(results_log),
