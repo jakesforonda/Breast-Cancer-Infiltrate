@@ -8,5 +8,5 @@ metadata/
 test/
 
 # Ignore large merged data
-results\merged_tpm_counts.csv
-results\merged_unstranded_counts.csv
+results/merged_tpm_counts.csv
+results/merged_unstranded_counts.csv
