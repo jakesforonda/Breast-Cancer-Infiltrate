@@ -3,11 +3,16 @@ install.packages(c("devtools", "curl"))
 library(devtools)
 install_github("ebecht/MCPcounter", ref = "master", subdir = "Source")
 
-# Load installed MCPcounter package
-library(MCPcounter)
+# Install pheatmap to analyze results
+install.packages("pheatmap")
 
-# Load the merged data
+# Load installed pheatmap package
+library(pheatmap)
+
+# Assign file path to variable
 data_path <- file.path("results", "merged_tpm_counts.csv")
+
+# Read merged TPM_unstranded counts
 merged_data <- read.csv(
   data_path, header = TRUE, row.names = 1, check.names = FALSE
 )
@@ -15,23 +20,30 @@ merged_data <- read.csv(
 # Input the matrix with MCPcounter
 results <- MCPcounter.estimate(merged_data, featuresType = "HUGO_symbols")
 
-# Output the results
+# Log-transform the results (add 1 to avoid log(0))
+results_log <- log2(results + 1)
+
+# Output the log-transformed results
 output_file <- file.path("results", "infil_counts.csv")
-write.csv(results, output_file, row.names = TRUE)
-
-# Install pheatmap to being analyzing results
-install.packages("pheatmap")
-
-# Load installed pheatmap package
-library(pheatmap)
+write.csv(results_log, output_file, row.names = TRUE)
 
 # Generate png for heatmap
 output_file <- file.path("results", "infil_heatmap.png")
-png(output_file, width = 800, height = 600)
+png(output_file, width = 1600, height = 600)
 
-# Plot the heatmap
-pheatmap(as.matrix(results), cluster_rows = TRUE, cluster_cols = TRUE,
-         main = "MCPcounter Cell Type Estimates")
+# Plot the heatmap with customizations
+pheatmap(as.matrix(results_log),
+  # Cluster Rows
+  cluster_rows = TRUE,
+  # Cluster Columns
+  cluster_cols = TRUE,
+  # Title the graph
+  main = "MCPcounter Cell Type Estimates (Log Transformed)",
+  # Remove numbers to reduce clutter
+  display_numbers = FALSE,
+  # Remove sample_names to reduce clutter
+  show_colnames = FALSE
+)
 
 # Close png file
 dev.off()
