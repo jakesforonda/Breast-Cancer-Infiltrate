@@ -9,6 +9,9 @@ install.packages("pheatmap")
 # Load installed pheatmap package
 library(pheatmap)
 
+# Load MCPCounter
+library(MCPcounter)
+
 # Assign file path to variable
 data_path <- file.path("results", "merged_tpm_counts.csv")
 
