@@ -1,11 +1,3 @@
-# Install MCPcounter for immune deconvolution per GitHub instructions
-install.packages(c("devtools", "curl"))
-library(devtools)
-install_github("ebecht/MCPcounter", ref = "master", subdir = "Source")
-
-# Install pheatmap to analyze results
-install.packages("pheatmap")
-
 # Load installed pheatmap package
 library(pheatmap)
 

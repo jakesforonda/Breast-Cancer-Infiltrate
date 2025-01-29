@@ -1,6 +1,3 @@
-# Install the data.table package to handle large data
-install.packages("data.table")
-
 # Load installed package
 library(data.table)
 

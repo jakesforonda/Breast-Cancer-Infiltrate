@@ -1,6 +1,3 @@
-# Install DESeq2 for analysis
-install.packages("DESeq2")
-
 # Load installed DESeq2 package
 library(DESeq2)
 
