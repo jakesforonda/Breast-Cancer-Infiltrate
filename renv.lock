@@ -32,6 +32,13 @@
     "Version": "3.20"
   },
   "Packages": {
+    "AsioHeaders": {
+      "Package": "AsioHeaders",
+      "Version": "1.22.1-2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "85bf3bd8fa58da21a22d84fd4f4ef0a8"
+    },
     "BH": {
       "Package": "BH",
       "Version": "1.87.0-1",
@@ -630,6 +637,19 @@
       ],
       "Hash": "de949855009e2d4d0e52a844e30617ae"
     },
+    "httpgd": {
+      "Package": "httpgd",
+      "Version": "2.0.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "AsioHeaders",
+        "R",
+        "cpp11",
+        "unigd"
+      ],
+      "Hash": "c30fb41ccc97f7797735633dccb9fcae"
+    },
     "httr": {
       "Package": "httr",
       "Version": "1.4.7",
@@ -911,6 +931,22 @@
       "Repository": "CRAN",
       "Hash": "de342ebfebdbf40477d0758d05426646"
     },
+    "systemfonts": {
+      "Package": "systemfonts",
+      "Version": "1.2.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cpp11",
+        "grid",
+        "jsonlite",
+        "lifecycle",
+        "tools",
+        "utils"
+      ],
+      "Hash": "f8b2924480a2679e2bad9750646112fe"
+    },
     "tibble": {
       "Package": "tibble",
       "Version": "3.2.1",
@@ -929,6 +965,18 @@
         "vctrs"
       ],
       "Hash": "a84e2cc86d07289b3b6f5069df7a004c"
+    },
+    "unigd": {
+      "Package": "unigd",
+      "Version": "0.1.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cpp11",
+        "systemfonts"
+      ],
+      "Hash": "9ed4b1941002ff508006885c66b5e473"
     },
     "utf8": {
       "Package": "utf8",

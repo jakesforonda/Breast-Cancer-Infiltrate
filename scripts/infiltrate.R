@@ -1,10 +1,10 @@
-# Load installed pheatmap package
+# Load necessary packages
 library(pheatmap)
-
-# Load MCPCounter
 library(MCPcounter)
+library(httpgd)
 
 print("Running infiltrate.R")
+
 # Assign file path to variable
 data_path <- file.path("results", "merged_tpm_counts.csv")
 
@@ -23,23 +23,29 @@ results_log <- log2(results + 1)
 output_file <- file.path("results", "infil_counts.csv")
 write.csv(results_log, output_file, row.names = TRUE)
 
-# Generate png for heatmap
+# Save the heatmap as PNG
 output_file <- file.path("results", "infil_heatmap.png")
 png(output_file, width = 1200, height = 800)
+pheatmap(as.matrix(results_log),
+  cluster_rows = TRUE,
+  cluster_cols = TRUE,
+  main = "MCPcounter Cell Type Estimates (Log Transformed)",
+  display_numbers = FALSE,
+  show_colnames = FALSE
+)
+dev.off()
+
+# Start httpgd graphics device
+hgd()
+hgd_view() # Open viewer in browser or VSCode if supported
 
 # Plot the heatmap with customizations
 pheatmap(as.matrix(results_log),
-  # Cluster Rows
-  cluster_rows = TRUE,
-  # Cluster Columns
-  cluster_cols = TRUE,
-  # Title the graph
-  main = "MCPcounter Cell Type Estimates (Log Transformed)",
-  # Remove numbers to reduce clutter
-  display_numbers = FALSE,
-  # Remove sample_names to reduce clutter
-  show_colnames = FALSE
+  cluster_rows = TRUE,   # Cluster Rows
+  cluster_cols = TRUE,   # Cluster Columns
+  main = "MCPcounter Cell Type Estimates (Log Transformed)", # Title
+  display_numbers = FALSE, # Remove numbers to reduce clutter
+  show_colnames = FALSE  # Remove sample names to reduce clutter
 )
+
 print("infiltrate.R complete")
-# Close png file
-dev.off()
