@@ -4,6 +4,7 @@ library(pheatmap)
 # Load MCPCounter
 library(MCPcounter)
 
+print("Running infiltrate.R")
 # Assign file path to variable
 data_path <- file.path("results", "merged_tpm_counts.csv")
 
@@ -39,6 +40,6 @@ pheatmap(as.matrix(results_log),
   # Remove sample_names to reduce clutter
   show_colnames = FALSE
 )
-
+print("infiltrate.R complete")
 # Close png file
 dev.off()
