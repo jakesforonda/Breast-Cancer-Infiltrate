@@ -1,5 +1,7 @@
-# Load installed DESeq2 package
+# Load the necessary libraries
 library(DESeq2)
+library(dplyr)
+library(pheatmap)
 
 # Read in merged_unstranded_counts
 data_path <- file.path("results", "merged_unstranded_counts.csv")
@@ -26,11 +28,35 @@ metadata$case_submitter_id <- NULL
 reorder_idx <- match(rownames(metadata), colnames(counts_data))
 reordered_counts_data <- counts_data[, reorder_idx]
 
+hgd()
+
 # Create DESeqDataSet object
 dds_obj <- DESeqDataSetFromMatrix(
   countData = reordered_counts_data,
   colData = metadata,
   design = ~ ajcc_pathologic_stage
 )
-print(head(reordered_counts_data))
-print(head(metadata))
+
+# Perform DESeq2 normalization
+dds_obj <- estimateSizeFactors(dds_obj)
+dds_obj_norm <- counts(dds_obj, normalized = TRUE)
+
+
+# Perform DESeq2 analysis and extract results
+vsd_obj <- vst(dds_obj, blind = TRUE)
+vsd_mat <- assay(vsd_obj)
+vsd_cor <- cor(vsd_mat)
+pheatmap(
+  vsd_cor,
+  annotation = select(metadata, ajcc_pathologic_stage),
+  main = "Variance Stabilizing Transformation Correlation Heatmap"
+)
+
+# Perform PCA analysis
+print(plotPCA(vsd_obj, intgroup = "ajcc_pathologic_stage"))
+
+hgd_view()
+
+# Perform DESeq2 analysis
+dds_obj <- DESeq(dds_obj)
+plotDispEsts(dds_obj)
