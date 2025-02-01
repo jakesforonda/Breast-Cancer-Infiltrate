@@ -31,7 +31,7 @@ for (file in files) {
   infil_tbl <- data[, .(gene_name, tpm_unstranded)]
   infil_tbl[, gene_name := sub("\\..*", "", gene_name)]
   infil_tbl <- infil_tbl[
-    , .(tpm_unstranded = sum(tpm_unstranded)),
+    , .(tpm_unstranded = as.integer(round(sum(tpm_unstranded)))),
     by = gene_name
   ]
   setnames(infil_tbl, "tpm_unstranded", file)
@@ -39,7 +39,9 @@ for (file in files) {
   # Process DE data
   de_tbl <- data[, .(gene_name, unstranded)]
   de_tbl[, gene_name := sub("\\..*", "", gene_name)]
-  de_tbl <- de_tbl[, .(unstranded = sum(unstranded)), by = gene_name]
+  de_tbl <- de_tbl[
+    , .(unstranded = as.integer(round(sum(unstranded)))), by = gene_name
+  ]
   setnames(de_tbl, "unstranded", file)
 
   # Store data.tables in lists
