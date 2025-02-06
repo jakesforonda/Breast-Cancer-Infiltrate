@@ -164,7 +164,7 @@ if (length(top_genes_1_vs_4) > 0) {
 dev.off()
 
 # Extract the 20 genes with the largest absolute log2 fold changes
-sig_genes <- as.data.frame(res_stage_1_vs_4)
+sig_genes <- as.data.frame(sig_genes_1_vs_4)
 sig_genes <- sig_genes[!is.na(sig_genes$log2FoldChange), ]
 sig_genes$gene <- rownames(sig_genes)  # Store gene names as a column
 
