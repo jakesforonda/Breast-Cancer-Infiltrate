@@ -163,20 +163,34 @@ if (length(top_genes_1_vs_4) > 0) {
 
 dev.off()
 
-# Plot log2 fold change for significant genes
-sig_genes <- as.data.frame(
-  res_stage_1_vs_4[head(which(res_stage_1_vs_4$padj < 0.05), 20), ]
+# Extract the 20 genes with the largest absolute log2 fold changes
+sig_genes <- as.data.frame(res_stage_1_vs_4)
+sig_genes <- sig_genes[!is.na(sig_genes$log2FoldChange), ]
+sig_genes$gene <- rownames(sig_genes)  # Store gene names as a column
+
+sorted_indices <- order(
+  abs(sig_genes$log2FoldChange), decreasing = TRUE
 )
+sig_genes_sorted <- sig_genes[sorted_indices, ]
+
+top_genes <- sig_genes_sorted[seq_len(min(20, nrow(sig_genes_sorted))), ]
+
+# Define output file
 output_file <- file.path("results", "sig_genes_I_vs_IV.png")
 png(output_file, width = 1200, height = 800)
-p <- ggplot(sig_genes,
-  aes(x = reorder(rownames(sig_genes), log2FoldChange), y = log2FoldChange)
-) +
+
+# Create bar plot
+p <- ggplot(top_genes, aes(
+  x = reorder(gene, log2FoldChange),  # Use the new 'gene' column
+  y = log2FoldChange
+)) +
   geom_bar(stat = "identity") +
   coord_flip() +
-  labs(title = "Log2 Fold Change for Significant Genes (Stage I vs Stage IV)",
+  labs(
+    title = "Top 20 Largest Log2 Fold Changes (Stage I vs Stage IV)",
     x = "Gene", y = "Log2 Fold Change"
   )
+
 print(p)
 dev.off()
 

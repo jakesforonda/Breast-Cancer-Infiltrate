@@ -11,3 +11,4 @@ test/
 results/merged_tpm_counts.csv
 results/merged_unstranded_counts.csv
 results/infil_counts.csv
+results/DE_results_Stage_I_vs_IV.csv
