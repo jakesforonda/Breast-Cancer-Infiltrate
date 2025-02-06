@@ -37,7 +37,7 @@ dev.off()
 
 # Start httpgd graphics device
 hgd()
-hgd_view() # Open viewer in browser or VSCode if supported
+hgd_view()
 
 # Plot the heatmap with customizations
 pheatmap(as.matrix(results_log),
