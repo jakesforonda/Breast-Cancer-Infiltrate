@@ -2,7 +2,7 @@
 library(data.table)
 
 # Make a list of files to access for iterating -> remove head() after testing
-files <- head(list.files(path = "data/", pattern = "*.tsv", full.names = FALSE))
+files <- list.files(path = "data/", pattern = "*.tsv", full.names = FALSE)
 
 # Read in metadata file
 metadata <- fread("metadata/gdc_sample_sheet.2025-01-29.tsv")
