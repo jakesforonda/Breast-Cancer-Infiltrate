@@ -41,12 +41,12 @@ Volcano Plot Stage I vs Stage IV Cancer:
 ![vol_plot](results/vol_plot_I_vs_IV.png)
 <br><br>
 
-Top 20 Most Significant Gene Heat Map:
+Top 20 Most Significant Genes Heat Map:
 
 ![20_sig_heatmap](results/20_genes_I_vs_IV.png)
 <br><br>
 
-Top 20 Significant Genes with Highest Absolute Log2Fold Change:
+Top 20 Highest Absolute Log2Fold Change Amongst Significant Genes:
 
 ![sig_genes](results/sig_genes_I_vs_IV.png)
 <br><br>
