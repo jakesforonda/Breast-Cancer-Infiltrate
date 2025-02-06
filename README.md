@@ -15,12 +15,14 @@ In order to answer my first question, I will use MCPcounter, a tool made by Etin
 To answer my second question, I will use DEseq2 to perform differential expression analysis. Using a variety of statistical methods, I will be able to determine differentially expressed genes between Stage I and Stage IV Breast Cancer. 
 
 # Results
-<p>
+<h3> Question 1 </h3>
+  
 Immune Cell Tumor Infiltrate:
   
 ![infil_heatmap](results/infil_heatmap.png)
 <br><br>
 
+<h3> Question 2 </h3>
 Correlation Matrix:
 
 ![correlation_matrix](results/correlation_matrix.png)
